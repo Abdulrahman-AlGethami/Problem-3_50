@@ -1,31 +1,42 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.5.33516.290
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "05_Problem_03", "05_Problem_03\05_Problem_03.vcxproj", "{A6FD9E45-7A84-45ED-A35C-59F5E2CD5E8B}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
-		Release|x64 = Release|x64
-		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A6FD9E45-7A84-45ED-A35C-59F5E2CD5E8B}.Debug|x64.ActiveCfg = Debug|x64
-		{A6FD9E45-7A84-45ED-A35C-59F5E2CD5E8B}.Debug|x64.Build.0 = Debug|x64
-		{A6FD9E45-7A84-45ED-A35C-59F5E2CD5E8B}.Debug|x86.ActiveCfg = Debug|Win32
-		{A6FD9E45-7A84-45ED-A35C-59F5E2CD5E8B}.Debug|x86.Build.0 = Debug|Win32
-		{A6FD9E45-7A84-45ED-A35C-59F5E2CD5E8B}.Release|x64.ActiveCfg = Release|x64
-		{A6FD9E45-7A84-45ED-A35C-59F5E2CD5E8B}.Release|x64.Build.0 = Release|x64
-		{A6FD9E45-7A84-45ED-A35C-59F5E2CD5E8B}.Release|x86.ActiveCfg = Release|Win32
-		{A6FD9E45-7A84-45ED-A35C-59F5E2CD5E8B}.Release|x86.Build.0 = Release|Win32
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {C4EF3782-8E35-496E-BE95-FB727F41F2E0}
-	EndGlobalSection
-EndGlobal
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int ReadPositiveNumber(string Message)
+{
+	int Number = 0;
+	do
+	{
+		cout << Message << endl;
+		cin >> Number;
+	} while (Number <= 0);
+	return Number;
+}
+
+bool isPerfectNumber(int Number)
+{
+	int Sum = 0;
+	for(int i=1; i < Number; i++)
+	{
+		if (Number % i == 0)
+			Sum += i;
+	}
+	return Number == Sum;
+}
+
+void PrintPerfectNumber(int Number)
+{
+	if (isPerfectNumber(Number))
+		cout << Number << "  Is Perfect Number.\n";
+	else
+		cout << Number << "  Is Not Perfect Number. \n";
+}
+
+int main()
+{
+	PrintPerfectNumber(ReadPositiveNumber("Please enter a positive number: "));
+
+	return 0;
+}
+
